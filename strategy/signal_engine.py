@@ -1,33 +1,19 @@
-from strategy.signal_engine import SmartMoneySignalEngine
+class SmartMoneySignalEngine:
 
+    def generate_signal(self, market="REAL"):
 
-print("""
-======== SmartMoneyBot ========
+        if market == "OTC":
 
-1 = OTC
-2 = REAL
+            return {
+                "market": "OTC",
+                "signal": "WAIT",
+                "buy_score": 50,
+                "sell_score": 50
+            }
 
-""")
-
-mode = input("Select Market: ")
-
-market = "REAL"
-
-if mode == "1":
-    market = "OTC"
-
-engine = SmartMoneySignalEngine()
-
-result = engine.generate_signal(
-    market=market
-)
-
-print("\n===== SIGNAL =====")
-
-print("Market:", result["market"])
-
-print("Signal:", result["signal"])
-
-print("BUY SCORE:", result["buy_score"])
-
-print("SELL SCORE:", result["sell_score"])
+        return {
+            "market": "REAL",
+            "signal": "WAIT",
+            "buy_score": 50,
+            "sell_score": 50
+        }
